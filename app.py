@@ -12,21 +12,43 @@ USERS = []
 def find_contact_of_user(memberID):
 	for user in USERS:
 		if(user.name == memberID):
-			return user
+			return user.number
 
 	return None
 
+def send_message(message):
+	message = client.messages.create(to="+19143090430",
+                           from_="+12019879174",
+                           body=message)
+
 @app.route("/", methods=['GET'])
 def hello():
-	# memberID = request.form['memberID']
 	memberID = request.args['memberID']
-	# date = request.form['date'] (array)
-	# startTime = request.form['startTime'] (array)
-	# endTime = request.form['endTime'] (array)
-	numKids = request.args['numKids']
-	# paymentMax = request.form['paymentMax']
 
-	print(find_contact_of_user('Mary'))
+	dates = request.args['date']
+	if(dates.find(", ") >= 0):
+		dates = dates.split(", ")
+	else:
+		dates = [dates]
+
+	startTime = request.args['startTime']
+	if(startTime.find(", ") >= 0):
+		startTime = startTime.split(", ")
+	else:
+		dates = [dates]
+
+	endTime = request.args['endTime']
+	if(endTime.find(", ") >= 0):
+		endTime = endTime.split(", ")
+	else:
+		endTime = [endTime]
+
+	numKids = request.args['numKids']
+
+	paymentMax = request.args['paymentMax']
+	
+	# number = find_contact_of_user(memberID)
+	# send_message("blah blah")
 
 	return render_template('output.html')
 
