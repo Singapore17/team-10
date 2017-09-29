@@ -1,4 +1,8 @@
 def timeMatching(request, provider):
+		print(request)
+		print(type(request))
+		print(provider)
+		print(type(provider))
 		
 		# Check day coincides
 		requestList = list(request.keys())
@@ -6,8 +10,10 @@ def timeMatching(request, provider):
 		maxWeight = 100
 		weightPerDay = maxWeight/nDays
 		currentWeight = maxWeight
+		timeCount = [];
 
 		for x in range(0, nDays):
+			timeCount.append(0)
 			if requestList[x] not in provider.keys():
 				#Person B cannot provide on that particular day
 				currentWeight -= weightPerDay
@@ -24,6 +30,17 @@ def timeMatching(request, provider):
 				timingRequestNum = [];
 				timingProviderNum = [];
 				totalTime = [];
+
+				for n in range(0, len(timingRequest)):
+					timingRequestNumIndiv = timingRequest[n].split("-")
+					timingRequestNumIndiv[0] = timingRequestNumIndiv[0].replace('30','50')
+					timingRequestNumIndiv[1] = timingRequestNumIndiv[1].replace('30','50')
+					timeIndivRequestEnd = float(timingRequestNumIndiv[1])
+					timeIndivRequestStart = float(timingRequestNumIndiv[0])
+					timeIndiv = timeIndivRequestEnd - timeIndivRequestStart
+					timeCount[x] += timeIndiv
+					timingRequestNum.append(timingRequestNumIndiv)
+
 				for y in range(0, len(timingRequest)):
 					
 					totalTime.append(0)
@@ -40,8 +57,10 @@ def timeMatching(request, provider):
 					fulfilledTime = 0
 					toCont = 1
 
-					while (toCont == 1):
-						for z in range(0, len(timingProvider)):
+					
+					for z in range(0, len(timingProvider)):
+						while (toCont == 1):
+							# print(z)
 
 							timingProviderNumIndiv = timingProvider[z].split("-")
 							timingProviderNumIndiv[0] = timingProviderNumIndiv[0].replace('30','50')
@@ -71,21 +90,7 @@ def timeMatching(request, provider):
 					# End of calculating fulfilled time
 					fulfilledTime += totalTime[y]
 					hoursNotFulfilled = totalTime[y] - fulfilledTime
-					currentWeight -= weightPerHour * hoursNotFulfilled
-
+					currentWeight -= weightPerDay/ timeCount[x] * hoursNotFulfilled
 		print(currentWeight)
+		return(currentWeight)
 
-
-
-
-
-def main():
-	#Data structure of timing: Hashmap/Dictionary {int day : list of list}
-	#1: [["9.30-15.30"],["17.00-19.30"]]
-
-	a = {'1':["9.30-12.30","13.00-19.30"],'2':["9.30-15.30","17.00-19.30"]}
-	b = {'1':["10.30-11.30","20.00-23.30"],'2':["9.30-15.30","17.00-19.30"]}
-	timeMatching(a,b)
-
-if __name__ == '__main__':
-    main()
