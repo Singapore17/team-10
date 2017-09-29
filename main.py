@@ -14,8 +14,6 @@ def match_algo():
 
 	# time val * address weightage
 
-	# address val * address weightage
-
-	# address val * address weightage
+	# pay val * pay weightage
 
 
