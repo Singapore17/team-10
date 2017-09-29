@@ -42,6 +42,7 @@ def match_algo(nric, req_location, date, startTime, endTime, req_num_kids, req_p
 		if (u.id == nric):
 			continue
 		num_kids = numOfKids(req_num_kids, u.n_kids)
+		req_pay_amt = float(req_pay_amt)
 		pay_amt = payment(req_pay_amt, u.min_amt)
 		# print(time_date)
 		# print(u.time_available)

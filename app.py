@@ -1,5 +1,6 @@
 from twilio.rest import Client
 from csv_reader import CSV_reader
+from main import match_algo
 from flask import Flask, request, render_template
 app = Flask(__name__)
  
@@ -9,6 +10,11 @@ client = Client(account, token)
 
 USERS = []
 
+def find_location_from_users(memberID):
+	for user in USERS:
+		if(user.name == memberID):
+			return user.location
+	return None
 
 def find_user(memberID):
 	for user in USERS:
@@ -54,8 +60,10 @@ def hello():
 
 	paymentMax = request.args['paymentMax']
 
+	location = find_location_from_users(memberID)
+
 	# number = find_contact_of_user(memberID)
-	# algoresult = main_algo(memberID, dates, startTime, endTime, numKids, paymentMax, users)
+	# algoresult = match_algo(memberID, location, dates, startTime, endTime, numKids, paymentMax)
 	algoresult = [
 		['Mary', 0.923],
 		['Sophia', 0.91],
