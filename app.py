@@ -9,26 +9,72 @@ client = Client(account, token)
 
 USERS = []
 
-def find_contact_of_user(memberID):
+
+def find_user(memberID):
 	for user in USERS:
 		if(user.name == memberID):
 			return user
+	return None
+
+def find_contact_of_user(memberID):
+	for user in USERS:
+		if(user.name == memberID):
+			return user.number
 
 	return None
 
+def send_message(message):
+	message = client.messages.create(to="+19143090430",
+                           from_="+12019879174",
+                           body=message)
+
 @app.route("/", methods=['GET'])
 def hello():
-	# memberID = request.form['memberID']
 	memberID = request.args['memberID']
-	# date = request.form['date'] (array)
-	# startTime = request.form['startTime'] (array)
-	# endTime = request.form['endTime'] (array)
+
+	dates = request.args['date']
+	if(dates.find(", ") >= 0):
+		dates = dates.split(", ")
+	else:
+		dates = [dates]
+
+	startTime = request.args['startTime']
+	if(startTime.find(", ") >= 0):
+		startTime = startTime.split(", ")
+	else:
+		dates = [dates]
+
+	endTime = request.args['endTime']
+	if(endTime.find(", ") >= 0):
+		endTime = endTime.split(", ")
+	else:
+		endTime = [endTime]
+
 	numKids = request.args['numKids']
-	# paymentMax = request.form['paymentMax']
 
-	print(find_contact_of_user('Mary'))
+	paymentMax = request.args['paymentMax']
 
-	return render_template('output.html')
+	# number = find_contact_of_user(memberID)
+	# algoresult = main_algo(memberID, dates, startTime, endTime, numKids, paymentMax, users)
+	algoresult = [
+		['Mary', 0.923],
+		['Sophia', 0.91],
+		['Olivia', 0.91],
+		['Emma', 0.91],
+		['Isabelle', 0.91],
+		['Madison', 0.89]
+	]
+
+	topusers = []
+
+	i = 0
+	while i < 5:
+		u = find_user(algoresult[i][0])
+		topusers.append([u.name, u.number, u.location, str(u.min_amt) + ' - ' + str(u.max_amt)])
+		i += 1
+
+	send_message(topusers)
+	return render_template('result.html', topusers = topusers)
 
 if __name__ == "__main__":
 	cs = CSV_reader()

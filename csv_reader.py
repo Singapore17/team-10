@@ -14,6 +14,9 @@ class CSV_reader:
             self.max_amt = max_amt
             self.n_kids = n_kids
 
+        def getName():
+            return self.name
+
     def read_file(self):
         file_name = 'codeforgood.csv'
         firstline = True
