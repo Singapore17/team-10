@@ -6,9 +6,7 @@
 <title>Daughters of Tomorrow</title>
 <link rel="stylesheet" href="assets/css/bootstrap.css">
 
-
 <style>
-
 a:link {
     color: gray;
     background-color: transparent;
@@ -120,59 +118,40 @@ span.psw {
     }
 }
 </style>
-<script>
-  function addMore() {
 
-  }
-
-  </script>
 </head>
 
 <body style="background-color:lightgrey">
-
-
 <br/>
 
 <div style="text-align:center">
 <h1 style="font-family: sans-serif"> Daughters of Tomorrow </h1>
 </div>
 <div class="imgcontainer">
-	<center><img src="C:\Users\daq11\Documents\developer\wamp64\www\dot\assets\image\charity.jpg" alt="Avatar" class="avatar"></center>
+	<center><img src="assets\image\charity.jpg" alt="Avatar" class="avatar"></center>
 </div>
 	<br/>
 
+<div class="container">
+  <label style="text-align: center"> <p style="font-family: sans-serif; font-size: 15px;"><b>First Matching</b></p></label><br/>
 
-<form name="requestForm" action="http://localhost:5000/" onsubmit="return validateForm()" method="get">
-   <div class="container" id="di">
-    <p style="font-family: sans-serif; font-size: 15px;">Name:<input type="text" placeholder=" " name="memberID" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">job description<input type="text" placeholder="e.g. take after kids at home" name="description" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">number of kids:<input type="text" placeholder=" " name="numKids" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">date:<input type="text" placeholder="xxxx-xx-xx" name="date" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">start time:<input type="text" placeholder="xx:xx" name="startTime" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">end time:<input type="text" placeholder=" xx:xx" name="endTime" required></p>
-    <p align="right"><input type="button" value="Add more time" id="addMore1" onclick="addMore()" /></p>
-    <p style="font-family: sans-serif; font-size: 15px;">maximum hourly payment:<input type="text" placeholder=" " name="paymentMax" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">any additional amount willing to pay:<input type="text" placeholder="e.g. travel assurance" name="addAmt" required></p>
+{% for user in topusers %}
+<a style="font-family: sans-serif; font-size: 15px;">Name: {{ user[0] }}
+<a style="font-family: sans-serif; font-size: 15px;">Contact Number: {{ user[1] }}
+<a style="font-family: sans-serif; font-size: 15px;">Location: {{ user[2] }}
+<a style="font-family: sans-serif; font-size: 15px;">Price: {{ user[3] }}
+<p>  &nbsp </p>
+{% endfor %}
 
-    &nbsp;
-	   <button type="submit"><b>SUBMIT REQUEST</b></button>
-<br/>
+</div>
 
-
-
-<p style="text-align: center; color:grey"><label style="font-family: sans-serif" ><a href="javascript:history.go(-1)"><b>Go Back</b></a></label></p>
-
-
-</div></form>
+  <button type="submit" onclick="#">OK</button>
 
 <br/>
 <br/>
 <br/>
-
 
 
 
 </body>
-
-
 </html>

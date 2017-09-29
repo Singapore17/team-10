@@ -14,6 +14,9 @@ class CSV_reader:
             self.max_amt = max_amt
             self.n_kids = n_kids
 
+        def getName():
+            return self.name
+
     def read_file(self):
         file_name = 'codeforgood.csv'
         firstline = True
@@ -46,13 +49,9 @@ class CSV_reader:
                 n_kids = int(row[7])
                 self.users.append(self.User(id,name,number,time_available,location,min_amt,max_amt,n_kids))
 
-<<<<<<< HEAD
-cs = CSV_reader()
-cs.read_file()
-=======
+
 # cs = CSV_reader()
 # cs.read_file()
->>>>>>> 3f31f8e9574b80cc2077f49eae14e50d67ee4509
 # for u in cs.users:
 #     print(u.name)
 #     print(u.number)

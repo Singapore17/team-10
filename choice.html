@@ -5,10 +5,11 @@
 <meta charset="UTF-8">
 <title>Daughters of Tomorrow</title>
 <link rel="stylesheet" href="assets/css/bootstrap.css">
-
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript"></script>
 
 <style>
-
 a:link {
     color: gray;
     background-color: transparent;
@@ -64,13 +65,13 @@ input[type=text], input[type=password] {
 button {
     background-color:#DF7401;
     color: white;
-	font-size:17px;
+	  font-size:20px;
     padding: 14px 20px;
     margin: 8px auto;
     border: none;
     cursor: pointer;
     width: 50%;
-	display: block;
+	  display: block;
 }
 
 /* Extra style for the cancel button (red) */
@@ -120,17 +121,10 @@ span.psw {
     }
 }
 </style>
-<script>
-  function addMore() {
 
-  }
-
-  </script>
 </head>
 
 <body style="background-color:lightgrey">
-
-
 <br/>
 
 <div style="text-align:center">
@@ -140,39 +134,12 @@ span.psw {
 	<center><img src="C:\Users\daq11\Documents\developer\wamp64\www\dot\assets\image\charity.jpg" alt="Avatar" class="avatar"></center>
 </div>
 	<br/>
-
-
-<form name="requestForm" action="http://localhost:5000/" onsubmit="return validateForm()" method="get">
-   <div class="container" id="di">
-    <p style="font-family: sans-serif; font-size: 15px;">Name:<input type="text" placeholder=" " name="memberID" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">job description<input type="text" placeholder="e.g. take after kids at home" name="description" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">number of kids:<input type="text" placeholder=" " name="numKids" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">date:<input type="text" placeholder="xxxx-xx-xx" name="date" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">start time:<input type="text" placeholder="xx:xx" name="startTime" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">end time:<input type="text" placeholder=" xx:xx" name="endTime" required></p>
-    <p align="right"><input type="button" value="Add more time" id="addMore1" onclick="addMore()" /></p>
-    <p style="font-family: sans-serif; font-size: 15px;">maximum hourly payment:<input type="text" placeholder=" " name="paymentMax" required></p>
-    <p style="font-family: sans-serif; font-size: 15px;">any additional amount willing to pay:<input type="text" placeholder="e.g. travel assurance" name="addAmt" required></p>
-
-    &nbsp;
-	   <button type="submit"><b>SUBMIT REQUEST</b></button>
-<br/>
-
-
-
-<p style="text-align: center; color:grey"><label style="font-family: sans-serif" ><a href="javascript:history.go(-1)"><b>Go Back</b></a></label></p>
-
-
-</div></form>
+  <button type="submit" onclick=location.href="requestForm.html"> Request Help</button><br/>
+  <button type="submit" onclick=location.href="fillAvailability.html">Available for Help</button>
 
 <br/>
 <br/>
 <br/>
-
-
-
 
 </body>
-
-
 </html>

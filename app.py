@@ -9,6 +9,13 @@ client = Client(account, token)
 
 USERS = []
 
+
+def find_user(memberID):
+	for user in USERS:
+		if(user.name == memberID):
+			return user
+	return None
+
 def find_contact_of_user(memberID):
 	for user in USERS:
 		if(user.name == memberID):
@@ -46,11 +53,28 @@ def hello():
 	numKids = request.args['numKids']
 
 	paymentMax = request.args['paymentMax']
-	
-	# number = find_contact_of_user(memberID)
-	# send_message("blah blah")
 
-	return render_template('output.html')
+	# number = find_contact_of_user(memberID)
+	# algoresult = main_algo(memberID, dates, startTime, endTime, numKids, paymentMax, users)
+	algoresult = [
+		['Mary', 0.923],
+		['Sophia', 0.91],
+		['Olivia', 0.91],
+		['Emma', 0.91],
+		['Isabelle', 0.91],
+		['Madison', 0.89]
+	]
+
+	topusers = []
+
+	i = 0
+	while i < 5:
+		u = find_user(algoresult[i][0])
+		topusers.append([u.name, u.number, u.location, str(u.min_amt) + ' - ' + str(u.max_amt)])
+		i += 1
+
+	send_message(topusers)
+	return render_template('result.html', topusers = topusers)
 
 if __name__ == "__main__":
 	cs = CSV_reader()
