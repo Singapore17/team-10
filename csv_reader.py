@@ -43,16 +43,16 @@ class CSV_reader:
                 n_kids = int(row[6])
                 self.users.append(self.User(name,number,time_available,location,min_amt,max_amt,n_kids))
 
-cs = CSV_reader()
-cs.read_file()
-for u in cs.users:
-    print(u.name)
-    print(u.number)
-    print(u.location)
-    print(u.time_available)
-    print(u.min_amt)
-    print(u.max_amt)
-    print(u.n_kids)
+# cs = CSV_reader()
+# cs.read_file()
+# for u in cs.users:
+#     print(u.name)
+#     print(u.number)
+#     print(u.location)
+#     print(u.time_available)
+#     print(u.min_amt)
+#     print(u.max_amt)
+#     print(u.n_kids)
 
 
 

@@ -3,7 +3,13 @@ app = Flask(__name__)
  
 @app.route("/", methods=['GET', 'POST'])
 def hello():
-	print request.form
+	memberID = request.form['memberID']
+	date = request.form['date']
+
+	print(date)
+
+	print(memberID)
+
 	return "Hello World!"
  
 if __name__ == "__main__":
