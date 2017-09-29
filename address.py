@@ -10,8 +10,8 @@ def address(locationA, locationB):
 	api = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
 
 	payload = {
-		'origins': 'Singapore 550147',
-		'destinations': 'Singapore 822104',
+		'origins': locationA,
+		'destinations': locationB,
 		'mode': 'walking',
 		'key': token
 	}
@@ -19,6 +19,8 @@ def address(locationA, locationB):
 	response = requests.get(api, params=payload)
 
 	distance_result = response.text
+
+	return distance_result
 
 	
 
